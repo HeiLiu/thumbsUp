@@ -1,0 +1,8 @@
+<!-- wml=>html 页面结构 -->
+<view class="container">
+  <image class='user-avatar' src='/assets/images/avatar/3.png'></image>
+  <text class='user-name'>终于被你找到了</text>
+  <view class='motto-container' bindtap="onTap">
+    <text class='motto'>点我点我</text>
+  </view>
+</view>
