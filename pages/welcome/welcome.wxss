@@ -1,31 +1,52 @@
-.container{
+page,.container{
    display:flex; 
-   flex-direction: column;
+   flex-direction: row;
    align-items: center;
+   justify-content: center;
    background-color: #EF0101;
+   width: 100%;
    height: 100vh;
 }
-.user-avatar{
-  margin-top: 160rpx;
+.zan{
   width: 200rpx;
   height: 200rpx;
-   
+  position: relative;
+  z-index: 999;
 }
-.user-name{
-  margin-top: 100rpx;
-  font-size: 32rpx;
-  font-weight: 600;
+/* 怎么布局slogen */
+.slogan{
+  z-index: 999;
 }
-.motto{
-  font-size: 22rpx;
-  font-weight: bolder;
-  line-height: 80rpx;
+.container:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: burlywood;
+  border-bottom: 1px solid yellow;
 }
-.motto-container{
-  margin-top: 200rpx;
-  border: 1px solid #405f80;
-  width: 200rpx;
-  height: 80rpx;
-  border-radius: 5px;
-  text-align: center; 
+/* 下半部分怎么实现 利用z-index好像可以解决*/
+.container::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: #fff;
+  z-index: 1;
+}
+.animation{
+  animation: rotate 2s linear;
+}
+@keyframes rotate{
+  0%{
+    transform: rotate(0);
+  }
+  50%{
+    transform: rotate(-180deg);
+  }
+  100%{
+    transform: rotate(-360deg);
+  }
 }

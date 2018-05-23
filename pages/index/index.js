@@ -1,54 +1,85 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    entity: {
+      content: '',
+      status: 'publish'
+    },
+    images: [{
+        id: 1,
+        path: 'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/whfpf%3D72%2C72%2C0/sign=31308be09edda144da5c3ff2d48ae790/3b87e950352ac65c2ddf4980f2f2b21192138a6e.jpg'
+      }
+    ],
+    loading: false
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  onLoad(event) {
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+  onChangeStatus(event) {
+    console.log(event.detail.value);
+    this.setData({
+      ['entity.status']: event.detail.value ? 'publish' : ''
+    });
+
+  },
+  onTapSubmitButton(event) {
+    // disable状态 ui 组件很多状态 loading
+    // 提交 ajax wx.request
+    this.setData({
+      loading: true
+    });
+    wx.request({
+      // 将API地址模块化，有利于以后的维护
+      url: API_CREATE,
+      method: 'POST',
+      data: {
+        ...this.data.entity
+      },
+      success: (response) => {
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          entity: {
+            title: '',
+            content: '',
+            status: 'publish'
+          },
+
+          loading: false
+        });
+        wx.navigateTo({
+          url: `/pages/posts/posts?id=${response.data.data.id}`
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    });
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  onChooseImage(event) {
+    let id = this.data.images[length].id;
+    console.log(this.data.images[length]);
+    console.log(this.data.images[length].id);
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['original','compressed'],
+      sourceType: ['album', 'camera'], //可以指定来源是相册还是相机
+      success: (response) => {
+        console.log(response);
+        // 返回是一个数组
+        const path = response.tempFiles[0].path;
+        const images = [{
+          id: id+1,
+          path
+        }, ...this.data.images];
+        this.setData({
+          images,
+          length: images.length
+        });
+        console.log(this.data.images);
+      }
+    });
+  },
+  deleteTap(e) {
+    var index = e.currentTarget.dataset.id;
+    // console.log(`index:${index}`);
+    var imgs = this.data.images;
+    imgs.splice(index, 1);
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+      images:imgs
+    });
   }
 })
