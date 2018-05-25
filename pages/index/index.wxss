@@ -1,16 +1,34 @@
-/**index.wxss**/
+/* *index.wxss*
+.textarea{
+  height: 6em;
+  font-size: .8em;
+}
 .title{
-  padding: 5rpx 10rpx;
+  padding: 5rpx 25rpx;
   border-top: 1px solid #ccc; 
   color: #ccc;
   font-size: 28rpx; 
 }
+.imageArea{
+  margin: 0 auto;
+}
 .uploader__file:nth-child(3n){
-  padding-right: 60rpx;
+  padding-right: 0;
 }
 .uploader__file:first-child{
   padding-left: 60rpx;
 }
 .uploader__file:nth-child(4){
-  padding: left 60rpx;
+  padding-left : 60rpx;
 }
+.uploader__img, .uploader__input-box{
+  width: 200rpx;
+  height: 200rpx;
+}
+ */
+.thumbNum{
+  padding: 10rpx 25rpx;
+  color: #ccc;
+  font-size: 28rpx; 
+}
+

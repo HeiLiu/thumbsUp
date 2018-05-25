@@ -6,6 +6,7 @@ page,.container{
    background-color: #EF0101;
    width: 100%;
    height: 100vh;
+   box-sizing: border-box;
 }
 .zan{
   width: 200rpx;
@@ -21,7 +22,8 @@ page,.container{
   content: '';
   position: absolute;
   top: 0;
-  width: 100%;
+  left: 0;
+  width: 100vh;
   height: 50vh;
   background-color: burlywood;
   border-bottom: 1px solid yellow;
@@ -30,6 +32,7 @@ page,.container{
 .container::after{
   content: '';
   position: absolute;
+  left: 0;
   bottom: 0;
   width: 100%;
   height: 50vh;
@@ -37,16 +40,20 @@ page,.container{
   z-index: 1;
 }
 .animation{
+  -webkit-animation: rotate 2s linear;
   animation: rotate 2s linear;
 }
 @keyframes rotate{
   0%{
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   50%{
+    -webkit-transform: rotate(-180deg);
     transform: rotate(-180deg);
   }
   100%{
+    -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
   }
 }

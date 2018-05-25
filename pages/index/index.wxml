@@ -1,44 +1,61 @@
-<view class="cell">
-  <view class="cell__bd">
-    <textarea style="height:6em;" value="{{entity.content}}" class="textarea" placeholder="这一刻的想法" bindinput="onInputContent">
-    </textarea>
-  </view>
-</view>
-<!-- <view class="cell"> -->
-<view class="cell__bd">
-  <view class="upload">
-    <view class="uploader__bd">
-      <view class="uploader__files">
-        <block wx:for="{{images}}" wx:key="{{item.id}}" style="margin: 0 auto;">
-          <view class="uploader__file">
-            <image bindlongpress="deleteTap" data-id="{{item.id}}" mode="aspectFill" class="uploader__img" src="{{item.path}}"></image>
+<view class="page">
+  取消 发表
+  <view class="page__bd">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea style="height:6em;" bindinput="onInputContent" value="{{entity.content}}" class="textarea" placeholder="这一刻的想法">
+          </textarea>
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__info">{{images.length}}/2</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{images}}" wx:key="{{item.id}}" style="margin: 0 auto;">
+                  <view class="weui-uploader__file">
+                    <image bindlongpress="deleteTap" data-id="{{item.id}}" mode="aspectFill" class="weui-uploader__img" src="{{item.path}}"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="onChooseImage"></view>
+              </view>
+            </view>
           </view>
-        </block>
-      </view>
-      <view class="uploader__input-box">
-        <view bindtap="onChooseImage" class="uploader__input"></view>
-      </view>
-    </view>
-  </view>
-</view>
-<!-- </view> -->
-<view class="title">设置</view>
-<view class="cells cells_after-title">
-    <view class="section section_gap">
-        <text class="section__title">点赞数量</text>
-        <view class="body-view">
-            <slider bindchange="slider1change" left-icon="cancel" right-icon="success_no_circle"/>
         </view>
+      </view>
     </view>
-    
-  <view class="cell cell_switch">
-    <view class="cell__bd">发布</view>
-    <view class="cell__ft">
-      <switch bindchange="onChangeStatus" checked="{{entity.status == 'publish'}}" />
+    <!-- setting -->
+    <view class="weui-cells__title">设置</view>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="../location/location" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="/assets/images/icon/address.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">所在位置</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__hd">
+          <image style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;" src="../../assets/images/icon/comments.png"></image>
+        </view>
+        <view class="weui-cell__bd">显示评论</view>
+        <view class="weui-cell__ft">
+          <switch bindchange="onChangeStatus" checked="{{entity.status == 'publish'}}" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell__hd">
+        <text class="thumbNum">点赞数量:</text>
+      </view>
+      <view class="weui-cell__bd">
+        <slider bindchange="sliderChange" min="22" max="100" show-value blockSize="15" />
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button loading="{{loading}}" class="weui-btn" bindtap="onTapSubmitButton" type="primary">生成朋友圈</button>
     </view>
   </view>
-</view>
-
-<view class="btn-area">
-  <button disabled="{{!entity.content}}" loading="{{loading}}" class="btn" bindtap="onTapSubmitButton" type="primary">{{entity.status?'发表文章':'保存'}}</button>
 </view>
