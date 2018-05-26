@@ -1,5 +1,18 @@
 <scroll-view class="container" scroll-y>
-    <view class="bgImg">
-        <image class="im" src="../../assets/images/post/bg.jpg"></image>
+    <!--<view class="top_cc"> -->
+    <!--右上角发布小图标-->
+    <view class="header">
+        <view class="top-right" bindtap="bindAdd">
+            <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindAdd"></image>
+        </view>
+        <view class="bgImg">
+            <image class="im" src="../../assets/images/post/bg.jpg"></image>
+        </view>
+        <view class="headerNickName">
+            <open-data class="nickname" lang="zh_CN" type="userNickName"></open-data>
+        </view>
+        <view class="headerAvatar">
+            <open-data class="thumb" type="userAvatarUrl"></open-data>
+        </view>
     </view>
 </scroll-view>

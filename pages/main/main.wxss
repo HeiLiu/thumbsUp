@@ -1,14 +1,49 @@
-page,.container{
+page,
+.container {
     height: 100vh;
     width: 100%;
 }
 
-.bgImg{
+.top-right {
+    position: absolute;
+    top: 20rpx;
+    right: 30rpx;
+    width: 70rpx;
+    height: 70rpx;
+    z-index: 99;
+}
+
+.baseImg {
+    width: 100%;
+    height: 100%;
+}
+
+.bgImg {
     width: 100%;
     height: 400rpx;
     overflow: hidden;
 }
-.im{
+
+.im {
     width: 100%;
     height: 100%;
+}
+
+.headerNickName {
+    position: absolute;
+    top: 325rpx;
+    right: 200rpx;
+    color: #fff;
+    font-size: 36rpx;
+    letter-spacing:4rpx;
+}
+
+.headerAvatar {
+    width: 150rpx;
+    height: 150rpx;
+    position: absolute;
+    top: 280rpx;
+    right: 20rpx;
+    border: 2px solid #fff;
+    overflow: hidden;
 }
