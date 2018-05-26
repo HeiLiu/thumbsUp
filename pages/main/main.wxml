@@ -1,0 +1,5 @@
+<scroll-view class="container" scroll-y>
+    <view class="bgImg">
+        <image class="im" src="../../assets/images/post/bg.jpg"></image>
+    </view>
+</scroll-view>
