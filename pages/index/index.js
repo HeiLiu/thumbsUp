@@ -2,21 +2,35 @@ Page({
   data: {
     entity: {
       content: '',
-      status: 'publish'
+      status: ''
     },
     images: [{
         id: 1,
-        path: 'https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/whfpf%3D72%2C72%2C0/sign=31308be09edda144da5c3ff2d48ae790/3b87e950352ac65c2ddf4980f2f2b21192138a6e.jpg'
+        path: '/assets/images/avatar/3.png'
       }
     ],
-    loading: false
+    loading: false,
+    thumbs:22,
+    location:''
   },
   onLoad(event) {
+  },
+  onShow(event){
+  },
+  onInputContent(event){
+    // 文章内容边输入边保存
+    let content = event.detail.value;
+    let entity = this.data.entity;
+    entity.content = content;
+    console.log(content);
+    this.setData({
+      entity
+    })
   },
   onChangeStatus(event) {
     console.log(event.detail.value);
     this.setData({
-      ['entity.status']: event.detail.value ? 'publish' : ''
+      ['entity.status']: event.detail.value ? 'comments' : ''
     });
 
   },
@@ -26,30 +40,28 @@ Page({
     this.setData({
       loading: true
     });
-    wx.request({
-      // 将API地址模块化，有利于以后的维护
-      url: API_CREATE,
-      method: 'POST',
-      data: {
-        ...this.data.entity
-      },
-      success: (response) => {
-        this.setData({
-          entity: {
-            title: '',
-            content: '',
-            status: 'publish'
-          },
+    // wx.request({
+    //   // 将API地址模块化，有利于以后的维护
+    //   data: {
+    //     ...this.data.entity
+    //   },
+    //   success: (response) => {
+    //     this.setData({
+    //       entity: {
+    //         content: '',
+    //         status: 'comments'
+    //       },
 
-          loading: false
-        });
-        wx.navigateTo({
-          url: `/pages/posts/posts?id=${response.data.data.id}`
-        })
-      }
-    });
+    //       loading: false
+    //     });
+    //     wx.navigateTo({
+    //       url: `/pages/posts/posts?id=${response.data.data.id}`
+    //     })
+    //   }
+    // });
   },
   onChooseImage(event) {
+    console.log('asd');
     let id = this.data.images[length].id;
     console.log(this.data.images[length]);
     console.log(this.data.images[length].id);
@@ -74,6 +86,7 @@ Page({
     });
   },
   deleteTap(e) {
+    // 长按图片删除
     var index = e.currentTarget.dataset.id;
     // console.log(`index:${index}`);
     var imgs = this.data.images;
@@ -81,5 +94,26 @@ Page({
     this.setData({
       images:imgs
     });
+  },
+  sliderChange(e){
+    // console.log(e.detail.value);
+    let thumbs = e.detail.value;
+    this.setData({
+      thumbs
+    })
+  },
+  chooseAddress(e){
+    // 选择地点
+    var that = this;
+    wx.chooseLocation({
+      success:function(res){
+        console.log(`位置名称:${res.name}`);
+        console.log(`详细地址:${res.address}`);
+        let location = res.address;
+        that.setData({
+          location
+        })
+      }
+    })
   }
 })
