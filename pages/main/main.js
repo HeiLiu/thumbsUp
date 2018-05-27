@@ -12,7 +12,12 @@ Page({
   onLoad: function (options) {
   
   },
-
+  bindAdd(){
+    wx.previewImage({
+      current: '', // 当前显示图片的http链接
+      urls: ['https://wx.qlogo.cn/mmhead/Q3auHgzwzM5Ps1ibeDV24zmVxOnLvjtdHqoamRoacfVFtbCGDLeZib2g/64'] // 需要预览的图片http链接列表
+  })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
