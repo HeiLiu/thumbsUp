@@ -3,7 +3,7 @@
     <!--右上角发布小图标-->
     <view class="header">
         <view class="top-right">
-            <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindAdd"></image>
+            <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindPublish"></image>
         </view>
         <view class="bgImg">
             <image class="bg" src="../../assets/images/post/bg.jpg"></image>
@@ -16,24 +16,51 @@
         </view>
     </view>
     <!-- 说说内容区 -->
-    <view wx:for="123" class="weui-cell weui-cell_access weui-flex" hover-class="weui-cell_active">
+    <view wx:if="{{content_info}}" class="weui-cell weui-cell_access weui-flex">
+        <view class="userInfo">
+            <open-data class="thumb" type="userAvatarUrl"></open-data>
+            <open-data class="nickName" lang="zh_CN" type="userNickName"></open-data>
+        </view>
+        <view class="weui-cell__bd content-box">
+            <view class="content">
+                <text class="word">{{content_info.entity.content}}</text>
+                <view class="images_box">
+                    <block  wx:for="{{content_info.images}}" wx:key="{{index}}" >
+                        <image class="userImg" src="{{item.path}}"></image>
+                    </block>
+                </view>
+            </view>
+            <view class="content_ft">
+                <view wx:if="{{content_info.location}}" class="address">{{content_info.location}}</view>
+                <view class="time">1分钟前</view>
+                <view class="operation">删除</view>
+            </view>
+        </view>
+        <view class="commentImg">
+            <image src="/assets/images/icon/biao.png"></image>
+        </view>
+    </view>
+    <view wx:for="123" wx:key="{{index}}" class="weui-cell weui-cell_access weui-flex">
         <view class="userInfo">
             <open-data class="thumb" type="userAvatarUrl"></open-data>
             <view class="nickName" lang="zh_CN" type="userNickName">青衣诶</view>
         </view>
         <view class="weui-cell__bd content-box">
             <view class="content">
-                    <text class="word">
-                            利客来克拉克了看来是开发了看离开戒毒所旅客谨防到时候替换
-                    </text>
-                    <view class="images_box">
-                        <image class="userImg" src="/assets/images/avatar/1.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/2.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/3.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/4.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/5.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/zan.png"></image>
-                    </view>
+                <text class="word">
+                    利客来克拉克了看来是开发了看离开戒毒所旅客谨防到时候替换
+                </text>
+                <view class="images_box">
+                    <image class="userImg" src="/assets/images/avatar/1.png"></image>
+                    <image class="userImg" src="/assets/images/avatar/2.png"></image>
+                    <image class="userImg" src="/assets/images/avatar/3.png"></image>
+                    <image class="userImg" src="/assets/images/avatar/4.png"></image>
+                    <image class="userImg" src="/assets/images/avatar/5.png"></image>
+                    <image class="userImg" src="/assets/images/avatar/zan.png"></image>
+                </view>
+            </view>
+            <view class="content_ft">
+                <view class="time">1分钟前</view>
             </view>
         </view>
         <view class="commentImg">

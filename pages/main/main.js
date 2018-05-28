@@ -3,16 +3,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    content_info:[],
+    comments:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let content_info = wx.getStorageSync('content_info');
+    console.log(content_info);
+    this.setData({
+      content_info
+    })
+    console.log(this.data.content_info.entity.content);
   },
   bindAdd(){
+    // 图片预览
     wx.previewImage({
       current: '', // 当前显示图片的http链接
       urls: ['https://wx.qlogo.cn/mmhead/Q3auHgzwzM5Ps1ibeDV24zmVxOnLvjtdHqoamRoacfVFtbCGDLeZib2g/64'] // 需要预览的图片http链接列表

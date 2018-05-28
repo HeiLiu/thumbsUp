@@ -84,12 +84,14 @@ page,
     left: 120rpx;
     width: 200rpx;    
     color:#576b95;
+    font-size: 34rpx;
 }
 .content-box{
     margin-left: 80rpx;
 }
 .content{
-    padding-top:50rpx;
+    padding-top:10rpx;
+    font-size: 32rpx;
 }
 .images_box{
     margin: 0 auto;
@@ -97,6 +99,19 @@ page,
 .images_box .userImg{
     width: 190rpx;
     height: 190rpx;
+}
+.content_ft{
+    font-size: 28rpx;
+    color: #576b95;
+}
+.content_ft .time{
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+}
+.content_ft .operation{
+    display: inline-block;
+    margin-left: 40rpx;
 }
 .commentImg{
     position: absolute;
