@@ -4,7 +4,8 @@ Page({
    */
   data: {
     content_info:[],
-    comments:[]
+    comments:[],
+    show:true
   },
 
   /**
@@ -18,7 +19,23 @@ Page({
     })
     console.log(this.data.content_info.entity.content);
   },
-  bindAdd(){
+  deleteTap(e){
+    wx.showModal({
+      // title:'确定删除吗?',
+      content:'确定删除吗?',
+      confirmText:'删除',
+      cancelText:'取消',
+      success:(res)=>{
+        if(res.confirm){
+          this.setData({
+            // 将内容置为null 做删除
+            content_info:null,
+          })
+        }
+      }
+    })
+  },
+  bindAdd(e){
     // 图片预览
     wx.previewImage({
       current: '', // 当前显示图片的http链接

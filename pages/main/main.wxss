@@ -19,7 +19,9 @@ page,
     width: 100%;
     height: 100%;
 }
-
+.b_color{
+    color: #576b95;
+}
 .bgImg {
     width: 100%;
     height: 400rpx;
@@ -88,6 +90,11 @@ page,
 }
 .content-box{
     margin-left: 80rpx;
+    margin-top: 5rpx;
+}
+.shuo{
+    margin-top: 45rpx;
+    margin-left: 80rpx;
 }
 .content{
     padding-top:10rpx;
@@ -100,28 +107,56 @@ page,
     width: 190rpx;
     height: 190rpx;
 }
+.address{
+    font-size: 28rpx;
+}
 .content_ft{
     font-size: 28rpx;
-    color: #576b95;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.content_ft .my_time{
+    /* margin-left: 20rpx; */
 }
 .content_ft .time{
     display: inline-block;
-    vertical-align: middle;
     color: #999;
 }
 .content_ft .operation{
-    display: inline-block;
-    margin-left: 40rpx;
+    padding-left: 60rpx;
+}
+.content_ft .my_comm{
+    margin-left:300rpx;
+    width: 50rpx;
+    height: 45rpx;
 }
 .commentImg{
-    position: absolute;
-    right: 10rpx;
-    bottom: 20rpx;
-    padding-top: 20rpx;
+    /* display: inline-block; */
+    margin-left: 460rpx;
+
     width: 50rpx;
     height: 45rpx;
 }
 .commentImg image{
     width: 100%;
     height: 100%;
+}
+
+.dianzan
+{
+  position:absolute;
+  width:120rpx;
+  border-right: 1px solid #ccc;
+  top:5rpx;
+  left:0;
+  text-align:center;
+}
+.content_bt{
+    background-color: #F3F3F5;
+}
+/*点赞*/
+.zanImg{
+    width: 40rpx;
+    height: 40rpx;
 }
