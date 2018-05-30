@@ -3,9 +3,11 @@ page,
     height: 100vh;
     width: 100%;
 }
-.header{
+
+.header {
     margin-bottom: 60rpx;
 }
+
 .top-right {
     position: absolute;
     top: 20rpx;
@@ -19,9 +21,11 @@ page,
     width: 100%;
     height: 100%;
 }
-.b_color{
+
+.b_color {
     color: #576b95;
 }
+
 .bgImg {
     width: 100%;
     height: 400rpx;
@@ -39,7 +43,7 @@ page,
     right: 200rpx;
     color: #fff;
     font-size: 36rpx;
-    letter-spacing:4rpx;
+    letter-spacing: 4rpx;
 }
 
 .headerAvatar {
@@ -52,111 +56,147 @@ page,
     overflow: hidden;
     z-index: 99;
 }
-.weui-flex{
+
+.weui-flex {
     display: flex;
     flex-direction: column;
     padding-bottom: 40rpx;
 }
-.weui-flex::before{
+
+.weui-flex::before {
     content: '';
     border-top: none;
 }
 
-.weui-cell~.weui-cell::before{
+.weui-cell~.weui-cell::before {
     margin-left: 0;
     top: 0;
     left: 0;
     border-top: 1rpx solid #d9d9d9
 }
-.userInfo{
+
+.userInfo {
     position: absolute;
     left: 0;
     padding: 20rpx;
 }
-.userInfo .thumb{
+
+.userInfo .thumb {
     display: inline-block;
     width: 80rpx;
     height: 80rpx;
     margin-right: 5px;
     vertical-align: middle;
 }
-.userInfo .nickName{
+
+.userInfo .nickName {
     position: absolute;
     top: 10rpx;
     left: 120rpx;
-    width: 200rpx;    
-    color:#576b95;
+    width: 200rpx;
+    color: #576b95;
     font-size: 34rpx;
 }
-.content-box{
+
+.content-box {
     margin-left: 80rpx;
     margin-top: 5rpx;
 }
-.shuo{
+
+.shuo {
     margin-top: 45rpx;
     margin-left: 80rpx;
+    margin-right: -10rpx;
 }
-.content{
-    padding-top:10rpx;
+
+.content {
+    padding-top: 10rpx;
     font-size: 32rpx;
 }
-.images_box{
-    margin: 0 auto;
+
+.images_box {
+    margin: 10rpx auto;
 }
-.images_box .userImg{
-    width: 190rpx;
-    height: 190rpx;
+
+.images_box .userImg {
+    width: 160rpx;
+    height: 160rpx;
+    margin: 8rpx;
 }
-.address{
+
+.address {
     font-size: 28rpx;
 }
-.content_ft{
+
+.content_ft {
     font-size: 28rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.content_ft .my_time{
-    /* margin-left: 20rpx; */
-}
-.content_ft .time{
+
+.content_ft .time {
     display: inline-block;
     color: #999;
 }
-.content_ft .operation{
-    padding-left: 60rpx;
+
+.content_ft .operation {
+    padding-left: 80rpx;
+    padding-right: 25rpx;
 }
-.content_ft .my_comm{
-    margin-left:300rpx;
-    width: 50rpx;
-    height: 45rpx;
-}
-.commentImg{
+.commentImg {
     /* display: inline-block; */
     margin-left: 460rpx;
-
     width: 50rpx;
     height: 45rpx;
+    position: absolute;
+    right: 15rpx;
 }
-.commentImg image{
+
+.commentImg image {
     width: 100%;
     height: 100%;
 }
 
-.dianzan
-{
-  position:absolute;
-  width:120rpx;
-  border-right: 1px solid #ccc;
-  top:5rpx;
-  left:0;
-  text-align:center;
+.dianzan {
+    position: absolute;
+    width: 120rpx;
+    border-right: 1px solid #ccc;
+    top: 5rpx;
+    left: 0;
+    text-align: center;
 }
-.content_bt{
+
+.content_bt {
     background-color: #F3F3F5;
+    position: relative;
 }
+
+.content_bt::before {
+    content: '';
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    top: -10rpx;
+    left: 40rpx;
+    background-color: red;
+    border: 1px solid #5d5e5d;
+}
+
 /*点赞*/
-.zanImg{
-    width: 40rpx;
-    height: 40rpx;
+
+.zanImg {
+    /* width: 40rpx; */
+    /* height: 40rpx; */
+    width:35rpx;
+    height:35rpx;
+    overflow:hidden;
+    margin-left: 25rpx;
+}
+
+.zan_nick {
+    position: relative;
+    color: #576b95;
+    font-size: 32rpx;
+    margin-left: 20rpx;
 }
