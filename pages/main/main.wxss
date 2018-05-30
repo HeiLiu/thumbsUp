@@ -113,7 +113,9 @@ page,
     padding-top: 10rpx;
     font-size: 32rpx;
 }
-
+.content .word{
+    padding-left: 10rpx;
+}
 .images_box {
     margin: 10rpx auto;
 }
@@ -196,6 +198,8 @@ page,
     align-items: center;
     flex-wrap: wrap;
     padding: 10rpx 0;
+    /* white-space: nowrap; */
+    word-break: break-all; 
 }
 .zanImg {
     /* width: 40rpx; */
@@ -208,9 +212,10 @@ page,
 }
 
 .zan_nick {
+    /* display: inline; */
     position: relative;
     font-size: 32rpx;
-    margin-left: 10rpx;
+    margin-left: 15rpx;
 }
 .line{
     background-color:rgba(217, 217, 217, 0.5);
