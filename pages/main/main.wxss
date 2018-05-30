@@ -150,7 +150,7 @@ page,
     width: 50rpx;
     height: 45rpx;
     position: absolute;
-    right: 15rpx;
+    right: 20rpx;
 }
 
 .commentImg image {
@@ -168,35 +168,56 @@ page,
 }
 
 .content_bt {
+    margin-top: 20rpx;
     background-color: #F3F3F5;
     position: relative;
 }
 
 .content_bt::before {
     content: '';
-    width: 20rpx;
-    height: 20rpx;
+    width: 25rpx;
+    height: 25rpx;
     position: absolute;
     top: -10rpx;
-    left: 40rpx;
-    background-color: red;
-    border: 1px solid #5d5e5d;
+    left: 25rpx;
+    z-index: -99;
+    background-color:#F3F3F5;
+    /* border: 1px solid #5d5e5d; */
+    /* border-left: 1px solid #5d5e5d;
+    border-top:1px solid #5d5e5d; */
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 /*点赞*/
-
+.zan_Area{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10rpx 0;
+}
 .zanImg {
     /* width: 40rpx; */
     /* height: 40rpx; */
     width:35rpx;
     height:35rpx;
+    line-height: 35rpx;
     overflow:hidden;
     margin-left: 25rpx;
 }
 
 .zan_nick {
     position: relative;
-    color: #576b95;
     font-size: 32rpx;
-    margin-left: 20rpx;
+    margin-left: 10rpx;
+}
+.line{
+    background-color:rgba(217, 217, 217, 0.5);
+    height: 1px;
+}
+.comment_Area{
+    margin-left: 10rpx;
+    font-size: 32rpx;
+    
 }

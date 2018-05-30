@@ -40,13 +40,20 @@
                 </view>
                 <!--显示点赞-->
                 <view class="content_bt" wx:if="{{content_info.entity.status}}">
-                    <image class="zanImg" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
-                    <block wx:for="123" wx:key="{{index}}">
-                        <text class="zan_nick b_color">青衣诶,</text>
-                    </block>
+                    <view class="zan_Area">
+                        <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
+                        <block wx:for="{{10}}" wx:key="{{index}}">
+                            <text class="zan_nick b_color">青衣诶,</text>
+                        </block>
+                    </view>
+                    <view class="line"></view>
                     <view class="comment_Area">
-                        <text class="nickName b_color">卢梦琪</text>
-                        <text class="comment">:哇~</text>
+                        <view wx:for="121">
+                            <text class="nickName b_color">卢梦琪</text>
+                            <text class="comment">:哇~</text>
+
+                        </view>
+
                     </view>
                 </view>
             </view>
