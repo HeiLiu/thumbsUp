@@ -16,7 +16,7 @@
             </view>
         </view>
         <!-- 说说内容区 -->
-        <view wx:if="{{content_info}}" class="weui-cell weui-cell_access weui-flex">
+        <view wx:if="{{content_info}}" class="weui-cell weui-cell_access weui-flex rmTopLine">
             <view class="userInfo">
                 <open-data class="thumb" type="userAvatarUrl"></open-data>
                 <open-data class="nickName b_color" lang="zh_CN" type="userNickName"></open-data>
@@ -32,7 +32,7 @@
                 </view>
                 <view wx:if="{{content_info.location}}" class="address b_color">{{content_info.location}}</view>
                 <view class="content_ft">
-                    <view class="time">1分钟前</view>
+                    <view class="time">{{content_info.selector?content_info.selector:'一分钟前'}}</view>
                     <view class="operation b_color" bindtap="deleteTap">删除</view>
                     <view class="commentImg">
                         <image src="/assets/images/icon/biao.png"></image>

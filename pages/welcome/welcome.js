@@ -1,11 +1,16 @@
 Page({
+    data:{
+        rotate:''
+    },
     onTap(){
-        // wx.navigateTo({
-        //     url:"../posts/post"
-        // });
-        wx.redirectTo({
-            // 不需要返回上一层
-            url:"../index/index"
+        this.setData({
+            rotate:true
         })
+        setTimeout(function(){
+            wx.redirectTo({
+                // 不需要返回上一层
+                url:"../index/index"
+            })
+        },2000)
     }
 })

@@ -4,11 +4,11 @@ Page({
    */
   data: {
     content_info: [],
-    nickNames: ['杨雪晋,','刘燕,','卢梦琪,','楠木青城°,','千古幽兰 @,','张朝,','青衿。嗣音,','笛子男儿,',
-      '冷面情殇,','吴印强,','JoeWright,','风雪归人,','千鸢锁画,','辛建华,','薄凉旧情人,','忍不住想念,','况韦琪,',',刘明',
-      '廖洋,','康帅傅','不畏将来、不念过去','冯宝宝,','一人之下,','张怀义,','旅梦,','刀削面公举,','曹老师,','墨雨无痕﹌,',
-      '梁红斌,','谢希仁,','全栈攻城狮,','あおぁいうぃき,','刷我滴卡','老爸,','小酒窝,','庞士元,','系统初始化、,','体面,',
-      'Tony强,','茂茂,','蒹葭,','Because U,','仇老师,','梦魇,','红莲斗篷,','青莲地心火,','净莲妖火,','怀念青春,','在建工程,',
+    nickNames: ['杨雪晋,', '刘燕,', '卢梦琪,', '楠木青城°,', '千古幽兰 @,', '张朝,', '青衿。嗣音,', '笛子男儿,',
+      '冷面情殇,', '吴印强,', 'JoeWright,', '风雪归人,', '千鸢锁画,', '辛建华,', '薄凉旧情人,', '忍不住想念,', '况韦琪,', ',刘明',
+      '廖洋,', '康帅傅', '不畏将来、不念过去', '冯宝宝,', '一人之下,', '张怀义,', '旅梦,', '刀削面公举,', '曹老师,', '墨雨无痕﹌,',
+      '梁红斌,', '谢希仁,', '全栈攻城狮,', 'あおぁいうぃき,', '刷我滴卡', '老爸,', '小酒窝,', '庞士元,', '系统初始化、,', '体面,',
+      'Tony强,', '茂茂,', '蒹葭,', 'Because U,', '仇老师,', '梦魇,', '红莲斗篷,', '青莲地心火,', '净莲妖火,', '怀念青春,', '在建工程,',
       '走运康,'
     ],
     comments: [{
@@ -34,32 +34,39 @@ Page({
     })
     // console.log(this.data.content_info.entity.content);
     let thumbs = this.data.content_info.thumbs;
-    console.log('传过来的thumbs'+thumbs);
+    console.log('传过来的thumbs' + thumbs);
     let nickNames = this.data.nickNames;
-    const temp=[];
-    for(let i =0;i<thumbs;i++){
+    const temp = [];
+    for (let i = 0; i < thumbs; i++) {
       temp.push(nickNames[i]);
     }
     console.log(temp);
     this.setData({
-      nickNames:temp
+      nickNames: temp
     })
   },
-  preImgTap(e){
+  preImgTap(e) {
     // 预览图片
     console.log(e.target);
+    // 保存当前图片的路径
     const images = this.data.content_info.images;
+    const path = images[e.currentTarget.dataset.id].path;
     let len = images.length;
-    const urls =[];
+    const urls = [];
     // [e.currentTarget.dataset.id]
-    for(let i = 0;i<len;i++){
+    for (let i = 0; i < len; i++) {
+      // if(path == images[i].path){
+
+      // }
       urls.push(images[i].path);
     }
+
     
-    wx.previewImage({
-      current: '', // 当前显示图片的http链接
-      urls:[images[e.currentTarget.dataset.id].path,...urls]// 需要预览的图片http链接列表
-  })
+      wx.previewImage({
+        current: '', // 当前显示图片的http链接
+        // 预览的逻辑？？？？
+        urls: [path, ...urls] // 需要预览的图片http链接列表
+      })
   },
   deleteTap(e) {
     wx.showModal({

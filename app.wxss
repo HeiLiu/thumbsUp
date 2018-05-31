@@ -1,3 +1,13 @@
 /**app.wxss**/
-@import './styles/weui.wxss';
 
+@import './styles/weui.wxss';
+.container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+}
+.rmTopLine::before{
+    content: "";
+    border-top: none;
+}
+.rmTopSpace{
+    margin-top: 0;
+  }

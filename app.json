@@ -1,14 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/main/main",
     "pages/welcome/welcome",
-    "pages/logs/logs",
-    "pages/location/location"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "发布朋友圈",
     "navigationBarTextStyle": "black"
   }
 }

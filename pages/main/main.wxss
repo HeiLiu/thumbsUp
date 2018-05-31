@@ -63,11 +63,6 @@ page,
     padding-bottom: 40rpx;
 }
 
-.weui-flex::before {
-    content: '';
-    border-top: none;
-}
-
 .weui-cell~.weui-cell::before {
     margin-left: 0;
     top: 0;

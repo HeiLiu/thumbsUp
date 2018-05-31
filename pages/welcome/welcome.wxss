@@ -28,6 +28,11 @@ page,.container{
   background-color: burlywood;
   border-bottom: 1px solid yellow;
 }
+
+.container:hover::before {
+  -webkit-transform: translateY(200);
+  transform: translateY(200);
+}
 /* 下半部分怎么实现 利用z-index好像可以解决*/
 .container::after{
   content: '';
@@ -43,6 +48,13 @@ page,.container{
   -webkit-animation: rotate 2s linear;
   animation: rotate 2s linear;
 }
+.biubiu{
+  -webkit-transform:rotate(720deg) scale(2,2);
+  transform:rotate(720deg) scale(0,0); 
+  -webkit-transition:all 2s ease-in-out;
+  transition:all 2s ease-in-out;
+}
+
 @keyframes rotate{
   0%{
     -webkit-transform: rotate(0);
