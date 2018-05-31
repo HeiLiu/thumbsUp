@@ -1,17 +1,10 @@
 /* *index.wxss* */
 .textarea{
   height: 6em;
-  font-size: .8em;
+  font-size: 32rpx;
 }
- .topLine{
-   margin-top: 0;
- }
- /* .imageBox{
-   margin: 0 auto;
- }
- .imageBox:nth-child(3n){
-   margin-right: 40px;
- } */
+
+
  .IMG{
   margin-right: 5px;vertical-align: middle;width:20px; height: 20px;
  }
@@ -22,5 +15,10 @@
 }
 slider{
   padding-bottom: 20rpx;
+  padding-left: 55rpx;
+}
+.publishTime{
+  padding-left: 50rpx;
+  color:#666;
 }
 

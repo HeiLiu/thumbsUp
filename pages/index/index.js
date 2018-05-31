@@ -4,20 +4,21 @@ Page({
       content: '',
       status: ''
     },
-    images: [{
-        id: 1,
-        path: '/assets/images/avatar/3.png'
-      }
-    ],
+    images: [],
     loading: false,
-    thumbs:22,
-    location:''
+    thumbs: 22,
+    location: '',
+    publishTime:['1分钟前','10分钟前','30分钟前','1小时前'],
+    selector:''
   },
-  onLoad(event) {
+  onLoad(event) {},
+  onShow(event) {
+    // 在每一次页面显示时 按钮的加载状态都为false
+    this.setData({
+      loading: false
+    })
   },
-  onShow(event){
-  },
-  onInputContent(event){
+  onInputContent(event) {
     // 文章内容边输入边保存
     let content = event.detail.value;
     let entity = this.data.entity;
@@ -40,48 +41,26 @@ Page({
     this.setData({
       loading: true
     });
-    // wx.request({
-    //   // 将API地址模块化，有利于以后的维护
-    //   data: {
-    //     ...this.data.entity
-    //   },
-    //   success: (response) => {
-    //     this.setData({
-    //       entity: {
-    //         content: '',
-    //         status: 'comments'
-    //       },
-
-    //       loading: false
-    //     });
-    //     wx.navigateTo({
-    //       url: `/pages/posts/posts?id=${response.data.data.id}`
-    //     })
-    //   }
-    // });
+    wx.setStorageSync('content_info', this.data);
+    wx.navigateTo({
+      url: '../main/main'
+    })
   },
   onChooseImage(event) {
-    console.log('asd');
-    let id = this.data.images[length].id;
-    console.log(this.data.images[length]);
-    console.log(this.data.images[length].id);
     wx.chooseImage({
       count: 9,
-      sizeType: ['original','compressed'],
+      sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'], //可以指定来源是相册还是相机
       success: (response) => {
         console.log(response);
         // 返回是一个数组
-        const path = response.tempFiles[0].path;
-        const images = [{
-          id: id+1,
-          path
-        }, ...this.data.images];
+        // const path = response.tempFiles[0].path;
+        const images = this.data.images;
         this.setData({
-          images,
-          length: images.length
+          // 还有一个小小的bug 以及长按图片删除
+          images: [...response.tempFiles]
         });
-        console.log(this.data.images);
+        // console.log(this.data.images);
       }
     });
   },
@@ -92,21 +71,21 @@ Page({
     var imgs = this.data.images;
     imgs.splice(index, 1);
     this.setData({
-      images:imgs
+      images: imgs
     });
   },
-  sliderChange(e){
+  sliderChange(e) {
     // console.log(e.detail.value);
     let thumbs = e.detail.value;
     this.setData({
       thumbs
     })
   },
-  chooseAddress(e){
+  chooseAddress(e) {
     // 选择地点
     var that = this;
     wx.chooseLocation({
-      success:function(res){
+      success: function (res) {
         console.log(`位置名称:${res.name}`);
         console.log(`详细地址:${res.address}`);
         let location = res.address;
@@ -114,6 +93,14 @@ Page({
           location
         })
       }
+    })
+  },
+  bindPublishChange(e) {
+    const id = e.detail.value;
+    console.log(e.detail);
+    const type = e.currentTarget.dataset.type;
+    this.setData({
+      selector: this.data.publishTime[id]
     })
   }
 })

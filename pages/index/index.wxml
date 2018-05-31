@@ -1,6 +1,6 @@
 <view class="page">
   <view class="page__bd">
-    <view class="weui-cells topLine">
+    <view class="weui-cells rmTopSpace">
       <view class="weui-cell">
         <view class="weui-cell__bd">
           <textarea bindinput="onInputContent" value="{{entity.content}}" class="textarea" placeholder="这一刻的想法">
@@ -45,12 +45,23 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells">
+    <view class="weui-cells rmTopLine rmTopSpace">
       <view class="weui-cell__hd">
         <text class="thumbNum">点赞数量:</text>
       </view>
       <view class="weui-cell__bd">
-        <slider bindchange="sliderChange" value="{{thumbs}}" min="22" max="100" show-value blockSize="25" />
+        <slider bindchange="sliderChange" value="{{thumbs}}" min="1" max="100" show-value blockSize="25" />
+      </view>
+    </view>
+    <!-- picker -->
+    <view class="weui-cell weui-cell_input rmTopLine">
+      <view class="weui-cell__hd">
+        <view class="weui-label">发布日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker data-type="publishPicker" mode="selector" value="1分钟前" range="{{publishTime}}" bindchange="bindPublishChange">
+          <view class="weui-input publishTime">{{selector}}</view>
+        </picker>
       </view>
     </view>
     <view class="weui-btn-area">
