@@ -114,21 +114,21 @@
                 </view>
                 <view class="nickName b_color">刘燕</view>
             </view>
+
             <view class="weui-cell__bd content-box shuo">
                 <view class="content">
                     <text class="word">{{content_info.entity.content}}</text>
-                    <!-- 一张图片的时候 -->
                     <view class="weui-grids images_list">
                         <block wx:for="{{content_info.images}}" wx:key="{{index}}">
-                            <view class="weui-grid image_item" hover-class="weui-grid_active">
+                            <view class="weui-grid {{content_info.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
                                 <image data-id="{{index}}" mode="aspectFill" src="{{item.path}}" bindtap="preImgTap" />
                             </view>
                         </block>
                     </view>
                 </view>
-                <view wx:if="123" class="address b_color">东门啊</view>
+                <view wx:if="{{content_info.location}}" class="address b_color">{{content_info.location}}</view>
                 <view class="content_ft">
-                    <view class="time">30分钟前</view>
+                    <view class="time">{{content_info.selector?content_info.selector:'1分钟前'}}</view>
                     <view class="commentImg">
                         <image src="/assets/images/icon/biao.png"></image>
                     </view>
@@ -137,15 +137,15 @@
                 <view class="content_bt" wx:if="{{true}}">
                     <view class="zan_Area">
                         <image class="zanImg b_color" src="../../assets/images/icon/heart1.png" mode="aspectFit"></image>
-                        <block wx:for="12" wx:key="{{index}}">
-                            <text class="zan_nick b_color">青衣诶,王凤琳</text>
+                        <block wx:for="{{nickNames}}" wx:key="{{index}}">
+                            <text class="zan_nick b_color">{{item}}</text>
                         </block>
                     </view>
-                    <view class="line"></view>
-                    <view class="comment_Area">
-                        <view wx:for="12" wx:key="{{index}}" bindtap="replyTap">
-                            <text class="nickName b_color">陆梦棋</text>
-                            <text class="comment">: 呸</text>
+                    <view class="line" wx:if="{{content_info.entity.status}}"></view>
+                    <view class="comment_Area" wx:if="{{content_info.entity.status}}">
+                        <view wx:for="{{comments}}" wx:key="{{index}}" bindtap="replyTap">
+                            <text class="nickName b_color">{{item.nickName}}</text>
+                            <text class="comment">: {{item.text}}</text>
                         </view>
 
                     </view>

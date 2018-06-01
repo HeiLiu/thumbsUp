@@ -112,9 +112,10 @@ page,
     font-size: 32rpx;
 }
 .content .word{
-    padding-left: 10rpx;
+    padding-left: 5rpx;
 }
 .images_list{
+    border: none;
     width: 560rpx;
 }
 .image_item{
@@ -123,7 +124,7 @@ page,
     height: 165rpx;
     margin: 5rpx;
     padding: 0;
-    /* background: red; */
+    border: none;
     position: relative;
 }
 .image_item image{
@@ -136,7 +137,7 @@ page,
     width: 45%;
     margin: 5rpx;
     padding: 0;
-    /* background: red; */
+    border: none;
     position: relative;
 }
 .image_item3_4 image{

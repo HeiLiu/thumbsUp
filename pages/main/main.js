@@ -23,7 +23,10 @@ Page({
         text: '哇~'
       }
     ],
-    show: true
+    show: true,
+    otherComments:[{
+      // 下面的其他人的说说的数据
+    }]
   },
 
   /**
