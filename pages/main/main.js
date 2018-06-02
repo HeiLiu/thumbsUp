@@ -28,8 +28,8 @@ Page({
       avatar_url: '/assets/images/post/l01.jpg',
       nickName: '刘燕',
       content: '物竞天择，适者生存、求一份小龙虾的做法，在线等',
-      images: ['/assets/images/post/l01.jpg', '/assets/images/post/l02.png', '/assets/images/post/l03.jpg', '/assets/images/post/l04.jpg'],
-      location: '上饶师范学院',
+      images: ['/assets/images/post/l02.png', '/assets/images/post/l03.jpg', '/assets/images/post/l04.jpg'],
+      location: '上饶市上饶师范学院',
       time: '20分钟前',
       zan: '赵老师, 卢鑫, 青衣诶',
       comments: [{
@@ -47,7 +47,7 @@ Page({
       avatar_url: '/assets/images/post/z04.jpg',
       nickName: '周友莲',
       content: '大班户外绘画比赛,一个个认真的样子真可爱',
-      images: ['/assets/images/post/z04.jpg', '/assets/images/post/z01.jpg', '/assets/images/post/z02.jpg', '/assets/images/post/z03.jpg'],
+      images: ['/assets/images/post/z01.jpg', '/assets/images/post/z02.jpg', '/assets/images/post/z03.jpg'],
       location: '宜春市红太阳幼儿园敖山大道',
       time: '17小时前',
       zan: '橘枳没有酒, 王凤琳, 青衣诶'
@@ -68,9 +68,10 @@ Page({
     console.log('传过来的thumbs' + thumbs);
     let nickNames = this.data.nickNames;
     const temp = [];
-    for (let i = 0; i < thumbs; i++) {
+    for (let i = 0; i < thumbs-1; i++) {
       temp.push(nickNames[i]);
     }
+    temp.push('佚名');
     console.log(temp);
     this.setData({
       nickNames: temp

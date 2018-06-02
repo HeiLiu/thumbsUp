@@ -56,10 +56,10 @@
     <!-- picker -->
     <view class="weui-cell weui-cell_input rmTopLine">
       <view class="weui-cell__hd">
-        <view class="weui-label">发布日期</view>
+        <view class="weui-label">发布时间</view>
       </view>
       <view class="weui-cell__bd">
-        <picker data-type="publishPicker" mode="selector" value="1分钟前" range="{{publishTime}}" bindchange="bindPublishChange">
+        <picker data-type="publishPicker" mode="selector" value="1" range="{{publishTime}}" bindchange="bindPublishChange">
           <view class="weui-input publishTime">{{selector}}</view>
         </picker>
       </view>

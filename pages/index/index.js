@@ -65,15 +65,25 @@ Page({
     });
   },
   deleteTap(e) {
-    // 长按图片删除
-    var index = e.currentTarget.dataset.id;
-    // console.log(`index:${index}`);
-    var imgs = this.data.images;
-    imgs.splice(index, 1);
-    this.setData({
-      images: imgs
+    var imgList = this.data.images;
+    // console.log(imagesList);
+    const index = e.currentTarget.dataset.item;
+    console.log(index);
+    imgList.splice(index, 1); 
+
+    wx.showModal({
+      title: '温馨提示',
+      content: '确定要删除吗',
+      showCancel: false,
+      confirmText: '确定',
+      success:(response)=>{
+        this.setData({
+          images:imgList
+        });
+      }
     });
-  },
+  }
+,
   sliderChange(e) {
     // console.log(e.detail.value);
     let thumbs = e.detail.value;

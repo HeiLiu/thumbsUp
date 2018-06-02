@@ -6,7 +6,7 @@
                 <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindPublish"></image>
             </view>
             <view class="bgImg">
-                <image class="bg" src="../../assets/images/post/bg.jpg"></image>
+                <image class="bg" src="../../assets/images/post/bg/crab.png"></image>
             </view>
             <view class="headerNickName">
                 <open-data lang="zh_CN" type="userNickName"></open-data>
@@ -50,7 +50,7 @@
                 <!--显示点赞-->
                 <view class="content_bt" wx:if="{{true}}">
                     <view class="zan_Area">
-                        <image class="zanImg b_color" src="../../assets/images/icon/heart1.png" mode="aspectFit"></image>
+                        <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
                         <block wx:for="{{nickNames}}" wx:key="{{index}}">
                             <text class="zan_nick b_color">{{item}}</text>
                         </block>
@@ -68,7 +68,7 @@
 
         </view>
         <!-- 循环说说内容 头像 avatar nickName content -->
-        <!-- <view wx:for="123" wx:key="{{index}}" class="weui-cell weui-cell_access weui-flex">
+        <!-- <view wx:for="1" wx:key="{{index}}" class="weui-cell weui-cell_access weui-flex">
             <view class="userInfo">
                 <view class="thumb" type="userAvatarUrl">
                     <image class="thumb_img" src="/assets/images/post/l01.jpg"></image>
@@ -82,11 +82,9 @@
                     </text>
                     <view class="images_box">
                         <image class="userImg" mode="aspectFill" src="../../assets/images/post/l02.PNG"></image>
-                        <image class="userImg" src="/assets/images/avatar/2.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/3.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/4.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/5.png"></image>
-                        <image class="userImg" src="/assets/images/avatar/zan.png"></image>
+                        <image class="userImg" mode="aspectFill" src="/assets/images/post/z01.jpg"></image>
+                        <image class="userImg" mode="aspectFill" src="/assets/images/post/z02.jpg"></image>
+                        <image class="userImg" mode="aspectFill" src="/assets/images/post/z03.jpg"></image>
                     </view>
                 </view>
                 <view class="content_ft">
@@ -97,7 +95,7 @@
                 </view>
                 <view class="content_bt">
                      <view class="zan_Area">
-                    <image class="zanImg b_color" src="../../assets/images/icon/heart1.png" mode="aspectFit"></image>
+                    <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
                     <block wx:for="12" wx:key="{{index}}">
                         <text class="zan_nick b_color">青衣诶,王凤琳</text>
                     </block>
@@ -137,7 +135,7 @@
                 <!--显示点赞-->
                 <view class="content_bt" wx:if="{{true}}">
                     <view class="zan_Area">
-                        <image class="zanImg b_color" src="../../assets/images/icon/heart1.png" mode="aspectFit"></image>
+                        <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
                          <text class="zan_nick b_color">{{item.zan}}</text>
                     </view>
                     <view class="line" wx:if="{{item.comments}}"></view>

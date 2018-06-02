@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/welcome/welcome",
     "pages/index/index",
     "pages/main/main",
-    "pages/welcome/welcome",
     "pages/logs/logs"
   ],
   "window": {
