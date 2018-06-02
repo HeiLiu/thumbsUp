@@ -1,6 +1,18 @@
 <!-- wml=>html 页面结构 -->
 <view class="container">
 
-  <image class="zan animation {{rotate?'biubiu':''}}" bindtap="onTap" src='/assets/images/avatar/zan.png'></image>
-  <!-- <text class='slogan'>终于被你找到了</text> -->
+  <view class="zan animation {{rotate?'biubiu':''}}" bindtap="onTap"></view>
+  <!-- <text class='slogan'>终于被你找到了</text>  -->
+  <ul class="bg-bubbles {{rotate?'biubiu':''}}">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </view>

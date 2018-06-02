@@ -1,16 +1,31 @@
+
 Page({
-    data:{
-        rotate:''
+    data: {
+        rotate: ''
     },
-    onTap(){
+    onTap() {
         this.setData({
-            rotate:true
+            rotate: true
         })
-        setTimeout(function(){
-            wx.redirectTo({
-                // 不需要返回上一层
-                url:"../index/index"
+        setTimeout(function () {
+            navigateTo();
+        }, 2000)
+    },
+
+    navigateTo:function() {
+        wx.redirectTo({
+            // 不需要返回上一层
+            url: "../index/index"
+        })
+        setTimeout(navigateTo(),2000)
+    },
+    
+    onLoad() {
+        setTimeout(() => {
+            this.setData({
+                rotate: true
             })
-        },2000)
+            navigateTo();
+        }, 5000)
     }
 })
