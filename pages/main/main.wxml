@@ -106,29 +106,30 @@
             </view>
         </view> -->
 
-        <!-- 循环说说内容 头像 avatar nickName content -->
-        <view wx:for="123" class="weui-cell weui-cell_access weui-flex">
+        <!-- 循环其他人的说说内容 头像 avatar_url nickName content -->
+        <view wx:for="{{otherContexts}}" wx:key="{{key}}" data-cid="{{key}}" class="weui-cell weui-cell_access weui-flex">
+        <!-- 头像昵称区域 -->
             <view class="userInfo">
                 <view class="thumb">
-                    <image class="thumb_img" src="/assets/images/post/l01.jpg"></image>
+                    <image class="thumb_img" src="{{item.avatar_url}}"></image>
                 </view>
-                <view class="nickName b_color">刘燕</view>
+                <view class="nickName b_color">{{item.nickName}}</view>
             </view>
-
+            <!-- 说说内容 -->
             <view class="weui-cell__bd content-box shuo">
                 <view class="content">
-                    <text class="word">{{content_info.entity.content}}</text>
+                    <text class="word">{{item.content}}</text>
                     <view class="weui-grids images_list">
-                        <block wx:for="{{content_info.images}}" wx:key="{{index}}">
-                            <view class="weui-grid {{content_info.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
-                                <image data-id="{{index}}" mode="aspectFill" src="{{item.path}}" bindtap="preImgTap" />
+                        <block wx:for="{{item.images}}" wx:key="{{index}}" wx:for-item="imageItem">
+                            <view class="weui-grid {{item.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
+                                <image data-id="{{index}}" data-key="{{cid}}" mode="aspectFill" src="{{imageItem}}" bindtap="preImgTap1" />
                             </view>
                         </block>
                     </view>
                 </view>
-                <view wx:if="{{content_info.location}}" class="address b_color">{{content_info.location}}</view>
+                <view wx:if="{{item.location}}" class="address b_color">{{item.location}}</view>
                 <view class="content_ft">
-                    <view class="time">{{content_info.selector?content_info.selector:'1分钟前'}}</view>
+                    <view class="time">{{item.time?item.time:'1分钟前'}}</view>
                     <view class="commentImg">
                         <image src="/assets/images/icon/biao.png"></image>
                     </view>
@@ -137,15 +138,13 @@
                 <view class="content_bt" wx:if="{{true}}">
                     <view class="zan_Area">
                         <image class="zanImg b_color" src="../../assets/images/icon/heart1.png" mode="aspectFit"></image>
-                        <block wx:for="{{nickNames}}" wx:key="{{index}}">
-                            <text class="zan_nick b_color">{{item}}</text>
-                        </block>
+                         <text class="zan_nick b_color">{{item.zan}}</text>
                     </view>
-                    <view class="line" wx:if="{{content_info.entity.status}}"></view>
-                    <view class="comment_Area" wx:if="{{content_info.entity.status}}">
-                        <view wx:for="{{comments}}" wx:key="{{index}}" bindtap="replyTap">
-                            <text class="nickName b_color">{{item.nickName}}</text>
-                            <text class="comment">: {{item.text}}</text>
+                    <view class="line" wx:if="{{item.comments}}"></view>
+                    <view class="comment_Area" wx:if="{{item.comments}}">
+                        <view wx:for="{{item.comments}}" wx:key="{{index}}" wx:for-item="commentItem" bindtap="replyTap">
+                            <text class="nickName b_color">{{commentItem.nickName}}</text>
+                            <text class="comment">: {{commentItem.text}}</text>
                         </view>
 
                     </view>
