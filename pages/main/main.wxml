@@ -6,7 +6,7 @@
                 <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindPublish"></image>
             </view>
             <view class="bgImg">
-                <image class="bg" src="../../assets/images/post/bg/crab.png"></image>
+                <image class="bg" src="../../assets/images/post/bg/bg2.png"></image>
             </view>
             <view class="headerNickName">
                 <open-data lang="zh_CN" type="userNickName"></open-data>

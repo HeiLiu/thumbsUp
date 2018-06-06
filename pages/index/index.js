@@ -23,7 +23,7 @@ Page({
     let content = event.detail.value;
     let entity = this.data.entity;
     entity.content = content;
-    console.log(content);
+    // console.log(content);
     this.setData({
       entity
     })
