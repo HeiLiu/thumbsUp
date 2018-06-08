@@ -302,7 +302,7 @@ page,
     font-weight: 500;
     position: absolute;
     bottom: -20rpx;
-    right: 70rpx;
+    right: 75rpx;
     border-radius: 7rpx;
     overflow: hidden;
     opacity: 0;
