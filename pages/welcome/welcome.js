@@ -9,7 +9,6 @@ Page({
       // 不需要返回上一层
       url: "../index/index"
     })
-    // setTimeout(navigateTo(),2000)
   },
 
   onTap() {
@@ -21,7 +20,6 @@ Page({
       //    navigateTo定义为了对象的方法 所以要用this调用
       this.navigateTo();
     }, 2000)
-    console.log(1);
   },
 
 
@@ -33,7 +31,6 @@ Page({
         })
         setTimeout(() => { this.navigateTo() }, 2000);
       }, 4000)
-      console.log(2);
 
   },
   onShow(event) {

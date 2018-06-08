@@ -83,10 +83,12 @@ page,
     margin-right: 5px;
     vertical-align: middle;
 }
-.thumb .thumb_img{
+
+.thumb .thumb_img {
     width: 100%;
     height: 100%;
 }
+
 .userInfo .nickName {
     position: absolute;
     top: 10rpx;
@@ -111,14 +113,17 @@ page,
     padding-top: 10rpx;
     font-size: 32rpx;
 }
-.content .word{
+
+.content .word {
     padding-left: 5rpx;
 }
-.images_list{
+
+.images_list {
     border: none;
     width: 560rpx;
 }
-.image_item{
+
+.image_item {
     box-sizing: border-box;
     width: 31%;
     height: 165rpx;
@@ -127,11 +132,13 @@ page,
     border: none;
     position: relative;
 }
-.image_item image{
+
+.image_item image {
     width: 165rpx;
     height: 165rpx;
 }
-.image_item3_4{
+
+.image_item3_4 {
     box-sizing: border-box;
     width: 45%;
     margin: 5rpx;
@@ -139,13 +146,14 @@ page,
     border: none;
     position: relative;
 }
-.image_item3_4 image{
+
+.image_item3_4 image {
     display: inline-block;
     width: 100%;
     max-height: 400rpx;
 }
 
-.grid_reset{
+.grid_reset {
     padding: 0;
 }
 
@@ -174,6 +182,7 @@ page,
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
 }
 
 .content_ft .time {
@@ -185,6 +194,7 @@ page,
     padding-left: 80rpx;
     padding-right: 25rpx;
 }
+
 .commentImg {
     /* display: inline-block; */
     margin-left: 460rpx;
@@ -222,7 +232,7 @@ page,
     top: -10rpx;
     left: 25rpx;
     z-index: -99;
-    background-color:#F3F3F5;
+    background-color: #F3F3F5;
     /* border: 1px solid #5d5e5d; */
     /* border-left: 1px solid #5d5e5d;
     border-top:1px solid #5d5e5d; */
@@ -231,22 +241,24 @@ page,
 }
 
 /*点赞*/
-.zan_Area{
+
+.zan_Area {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
     padding: 10rpx 0;
     /* white-space: nowrap; */
-    word-break: break-all; 
+    word-break: break-all;
 }
+
 .zanImg {
     /* width: 40rpx; */
     /* height: 40rpx; */
-    width:35rpx;
-    height:35rpx;
+    width: 35rpx;
+    height: 35rpx;
     line-height: 35rpx;
-    overflow:hidden;
+    overflow: hidden;
     margin-left: 25rpx;
 }
 
@@ -256,21 +268,76 @@ page,
     font-size: 32rpx;
     margin-left: 15rpx;
 }
-.line{
-    background-color:rgba(217, 217, 217, 0.5);
+
+.line {
+    background-color: rgba(217, 217, 217, 0.5);
     height: 1px;
 }
-.comment_Area{
+
+.comment_Area {
     margin-left: 10rpx;
     font-size: 32rpx;
-    
 }
-.comment_Area .comment_input{
+
+.comment_Area .comment_input {
     outline: none;
     appearance: none;
     margin-bottom: 0;
     display: inline-block;
-    min-width:50rpx;
-    _width:220rpx;
+    min-width: 50rpx;
+    _width: 220rpx;
     width: auto;
+}
+
+.caozuo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 0rpx;
+    height: 75rpx;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    position: absolute;
+    bottom: -20rpx;
+    right: 70rpx;
+    border-radius: 7rpx;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 99;
+    /* transform: translateX(100%); */
+    transition: all .2s ease-in;
+}
+
+.caozuo image {
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    overflow: hidden;
+    padding-right: 8rpx;
+    vertical-align: middle;
+}
+
+.zan {
+    padding-right: 20rpx;
+    border-right: 1rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.lun {
+    padding-left: 20rpx;
+}
+
+.dianzan {
+    position: absolute;
+    width: 120rpx;
+    border-right: 1px solid #ccc;
+    top: 5rpx;
+    left: 0;
+    text-align: center;
+}
+.in{
+    width: 275rpx;
+    opacity: 1;
 }

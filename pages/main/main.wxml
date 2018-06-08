@@ -1,74 +1,77 @@
 <scroll-view scroll-y>
-    <view class="container">
-        <!--右上角发布小图标-->
-        <view class="header">
-            <view class="top-right">
-                <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindPublish"></image>
-            </view>
-            <view class="bgImg">
-                <image class="bg" src="../../assets/images/post/bg/bg2.png"></image>
-            </view>
-            <view class="headerNickName">
-                <open-data lang="zh_CN" type="userNickName"></open-data>
-            </view>
-            <view class="headerAvatar">
-                <open-data type="userAvatarUrl" bindtap="bindAdd"></open-data>
-            </view>
+  <view class="container">
+    <!--右上角发布小图标-->
+    <view class="header">
+      <view class="top-right">
+        <image class="baseImg" src="../../assets/images/icon/camera.png" mode="scaleToFill" catchtap="bindPublish"></image>
+      </view>
+      <view class="bgImg">
+        <image class="bg" src="../../assets/images/post/bg/bg2.png"></image>
+      </view>
+      <view class="headerNickName">
+        <open-data lang="zh_CN" type="userNickName"></open-data>
+      </view>
+      <view class="headerAvatar">
+        <open-data type="userAvatarUrl" bindtap="bindAdd"></open-data>
+      </view>
+    </view>
+    <!-- 说说内容区 -->
+    <view wx:if="{{content_info}}" class="weui-cell weui-cell_access weui-flex rmTopLine">
+      <view class="userInfo">
+        <open-data class="thumb" type="userAvatarUrl"></open-data>
+        <open-data class="nickName b_color" lang="zh_CN" type="userNickName"></open-data>
+      </view>
+      <view class="weui-cell__bd content-box shuo">
+        <view class="content">
+          <text class="word">{{content_info.entity.content}}</text>
+          <view class="weui-grids images_list">
+            <block wx:for="{{content_info.images}}" wx:key="{{index}}">
+              <view class="weui-grid {{content_info.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
+                <image data-id="{{index}}" mode="aspectFill" src="{{item.path}}" bindtap="preImgTap" />
+              </view>
+            </block>
+          </view>
         </view>
-        <!-- 说说内容区 -->
-        <view wx:if="{{content_info}}" class="weui-cell weui-cell_access weui-flex rmTopLine">
-            <view class="userInfo">
-                <open-data class="thumb" type="userAvatarUrl"></open-data>
-                <open-data class="nickName b_color" lang="zh_CN" type="userNickName"></open-data>
-            </view>
-            <view class="weui-cell__bd content-box shuo">
-                <view class="content">
-                    <text class="word">{{content_info.entity.content}}</text>
-                    <!-- <view class="images_box">
-                        <block wx:for="{{content_info.images}}" wx:key="{{index}}">
-                            <image data-id="{{index}}" mode="aspectFit" class="{{content_info.images.length >1?'userImg':'userImg3_4'}}" src="{{item.path}}"
-                                bindtap="preImgTap"></image>
-                        </block>
-                    </view> -->
-                    <!-- 一张图片的时候 -->
-                    <view class="weui-grids images_list">
-                        <block wx:for="{{content_info.images}}" wx:key="{{index}}">
-                            <view class="weui-grid {{content_info.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
-                                <image data-id="{{index}}" mode="aspectFill" src="{{item.path}}" bindtap="preImgTap" />
-                            </view>
-                        </block>
-                    </view>
-                </view>
-                <view wx:if="{{content_info.location}}" class="address b_color">{{content_info.location}}</view>
-                <view class="content_ft">
-                    <view class="time">{{content_info.selector?content_info.selector:'1分钟前'}}</view>
-                    <view class="operation b_color" bindtap="deleteTap">删除</view>
-                    <view class="commentImg">
-                        <image src="/assets/images/icon/biao.png"></image>
-                    </view>
-                </view>
-                <!--显示点赞-->
-                <view class="content_bt" wx:if="{{true}}">
-                    <view class="zan_Area">
-                        <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
-                        <block wx:for="{{nickNames}}" wx:key="{{index}}">
-                            <text class="zan_nick b_color">{{item}}</text>
-                        </block>
-                    </view>
-                    <view class="line" wx:if="{{content_info.entity.status}}"></view>
-                    <view class="comment_Area" wx:if="{{content_info.entity.status}}">
-                        <view wx:for="{{comments}}" wx:key="{{index}}" bindtap="replyTap">
-                            <text class="nickName b_color">{{item.nickName}}</text>
-                            <text class="comment">: {{item.text}}</text>
-                        </view>
+        <view wx:if="{{content_info.location}}" class="address b_color">{{content_info.location}}</view>
+        <view class="content_ft">
+          <view class="time">{{content_info.selector?content_info.selector:'1分钟前'}}</view>
+          <view class="operation b_color" bindtap="deleteTap">删除</view>
 
-                    </view>
-                </view>
-            </view>
+          <!--点赞评论标签-->
+          <view class="caozuo {{showOp?'in':''}}">
+          <image src="../../assets/images/icon/heart.png" catchtap="addThumb"></image>
+            <text class="zan" catchtap="addThumb">赞</text>
+            <image class="lun" src="../../assets/images/icon/comment1.png"></image>
+            <text bindtap="bindPingLunA">评论</text>
+          </view>
 
+
+          <view class="commentImg">
+            <image src="/assets/images/icon/biao.png" bindtap="showTap"></image>
+          </view>
         </view>
-        <!-- 循环说说内容 头像 avatar nickName content -->
-        <!-- <view wx:for="1" wx:key="{{index}}" class="weui-cell weui-cell_access weui-flex">
+        <!--显示点赞-->
+        <view class="content_bt" wx:if="{{true}}">
+          <view class="zan_Area">
+            <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
+            <block wx:for="{{nickNames}}" wx:key="{{index}}">
+              <text class="zan_nick b_color">{{item}}</text>
+            </block>
+          </view>
+          <view class="line" wx:if="{{content_info.entity.status}}"></view>
+          <view class="comment_Area" wx:if="{{content_info.entity.status}}">
+            <view wx:for="{{comments}}" wx:key="{{index}}" bindtap="replyTap">
+              <text class="nickName b_color">{{item.nickName}}</text>
+              <text class="comment">: {{item.text}}</text>
+            </view>
+
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 循环说说内容 头像 avatar nickName content -->
+    <!-- <view wx:for="1" wx:key="{{index}}" class="weui-cell weui-cell_access weui-flex">
             <view class="userInfo">
                 <view class="thumb" type="userAvatarUrl">
                     <image class="thumb_img" src="/assets/images/post/l01.jpg"></image>
@@ -104,51 +107,52 @@
             </view>
         </view> -->
 
-        <!-- 循环其他人的说说内容 头像 avatar_url nickName content -->
-        <view wx:for="{{otherContexts}}" wx:key="{{key}}" data-cid="{{key}}" class="weui-cell weui-cell_access weui-flex">
-        <!-- 头像昵称区域 -->
-            <view class="userInfo">
-                <view class="thumb">
-                    <image class="thumb_img" src="{{item.avatar_url}}"></image>
-                </view>
-                <view class="nickName b_color">{{item.nickName}}</view>
-            </view>
-            <!-- 说说内容 -->
-            <view class="weui-cell__bd content-box shuo">
-                <view class="content">
-                    <text class="word">{{item.content}}</text>
-                    <view class="weui-grids images_list">
-                        <block wx:for="{{item.images}}" wx:key="{{index}}" wx:for-item="imageItem">
-                            <view class="weui-grid {{item.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
-                                <image data-id="{{index}}" data-key="{{cid}}" mode="aspectFill" src="{{imageItem}}" bindtap="preImgTap1" />
-                            </view>
-                        </block>
-                    </view>
-                </view>
-                <view wx:if="{{item.location}}" class="address b_color">{{item.location}}</view>
-                <view class="content_ft">
-                    <view class="time">{{item.time?item.time:'1分钟前'}}</view>
-                    <view class="commentImg">
-                        <image src="/assets/images/icon/biao.png"></image>
-                    </view>
-                </view>
-                <!--显示点赞-->
-                <view class="content_bt" wx:if="{{true}}">
-                    <view class="zan_Area">
-                        <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
-                         <text class="zan_nick b_color">{{item.zan}}</text>
-                    </view>
-                    <view class="line" wx:if="{{item.comments}}"></view>
-                    <view class="comment_Area" wx:if="{{item.comments}}">
-                        <view wx:for="{{item.comments}}" wx:key="{{index}}" wx:for-item="commentItem" bindtap="replyTap">
-                            <text class="nickName b_color">{{commentItem.nickName}}</text>
-                            <text class="comment">: {{commentItem.text}}</text>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-
+    <!-- 循环其他人的说说内容 头像 avatar_url nickName content -->
+    <view wx:for="{{otherContexts}}" wx:key="{{key}}" data-cid="{{key}}" class="weui-cell weui-cell_access weui-flex">
+      <!-- 头像昵称区域 -->
+      <view class="userInfo">
+        <view class="thumb">
+          <image class="thumb_img" src="{{item.avatar_url}}"></image>
         </view>
+        <view class="nickName b_color">{{item.nickName}}</view>
+      </view>
+      <!-- 说说内容 -->
+      <view class="weui-cell__bd content-box shuo">
+        <view class="content">
+          <text class="word">{{item.content}}</text>
+          <view class="weui-grids images_list">
+            <block wx:for="{{item.images}}" wx:key="{{index}}" wx:for-item="imageItem">
+              <view class="weui-grid {{item.images.length >1?'image_item':'image_item3_4'}}" hover-class="weui-grid_active">
+                <image data-id="{{index}}" data-key="{{cid}}" mode="aspectFill" src="{{imageItem}}" bindtap="preImgTap1" />
+              </view>
+            </block>
+          </view>
+        </view>
+        <view wx:if="{{item.location}}" class="address b_color">{{item.location}}</view>
+        <view class="content_ft">
+          <view class="time">{{item.time?item.time:'1分钟前'}}</view>
+          <view class="commentImg">
+            <image src="/assets/images/icon/biao.png"></image>
+          </view>
+        </view>
+        <!--显示点赞-->
+        <view class="content_bt" wx:if="{{true}}">
+          <view class="zan_Area">
+            <image class="zanImg b_color" src="../../assets/images/icon/heart.png" mode="aspectFit"></image>
+            <text class="zan_nick b_color">{{item.zan}}</text>
+          </view>
+          <view class="line" wx:if="{{item.comments}}"></view>
+          <view class="comment_Area" wx:if="{{item.comments}}">
+            <view wx:for="{{item.comments}}" wx:key="{{index}}" wx:for-item="commentItem" bindtap="replyTap">
+              <text class="nickName b_color">{{commentItem.nickName}}</text>
+              <text class="comment">: {{commentItem.text}}</text>
+            </view>
+
+          </view>
+        </view>
+      </view>
+
     </view>
+  </view>
+
 </scroll-view>
